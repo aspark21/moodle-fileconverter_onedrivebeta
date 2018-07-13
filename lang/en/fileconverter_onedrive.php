@@ -27,8 +27,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Microsoft OneDrive';
 $string['disabled'] = 'Disabled';
+$string['downloadfailed'] = 'Moodle could not download the converted file from Microsoft.';
 $string['issuer'] = 'OAuth 2 service';
 $string['issuer_help'] = 'The OAuth 2 service used to access Microsoft OneDrive.';
+$string['nodownloadurl'] = 'The Microsoft Graph conversion API did not send a URL to the converted document';
 $string['privacy:metadata:fileconverter_onedrive:externalpurpose'] = 'This information is sent to Microsoft OneDrive API in order the file to be converted to an alternative format. The file is temporarily kept on Microsoft OneDrive Drive and gets deleted after the conversion is done.';
 $string['privacy:metadata:fileconverter_onedrive:filecontent'] = 'The content of the file.';
 $string['privacy:metadata:fileconverter_onedrive:params'] = 'The query parameters passed to Microsoft OneDrive API.';
