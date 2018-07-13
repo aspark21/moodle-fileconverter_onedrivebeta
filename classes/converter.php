@@ -61,12 +61,14 @@ class converter implements \core_files\converter_interface {
         $issuerid = get_config('fileconverter_onedrive', 'issuerid');
         if (empty($issuerid)) {
             $conversion->set('status', conversion::STATUS_FAILED);
+            $conversion->set('statusmessage', get_string('test_issuernotset', 'fileconverter_onedrive'));
             return $this;
         }
 
         $issuer = \core\oauth2\api::get_issuer($issuerid);
         if (empty($issuer)) {
             $conversion->set('status', conversion::STATUS_FAILED);
+            $conversion->set('statusmessage', get_string('test_issuerinvalid', 'fileconverter_onedrive'));
             return $this;
         }
         $client = \core\oauth2\api::get_system_oauth_client($issuer);
@@ -116,6 +118,7 @@ class converter implements \core_files\converter_interface {
 
         if (empty($downloadurl)) {
             $conversion->set('status', conversion::STATUS_FAILED);
+            $conversion->set('statusmessage', get_string('nodownloadurl', 'fileconverter_onedrive'));
             return $this;
         }
 
@@ -134,6 +137,7 @@ class converter implements \core_files\converter_interface {
             $conversion->update();
         } else {
             $conversion->set('status', conversion::STATUS_FAILED);
+            $conversion->set('statusmessage', get_string('downloadfailed', 'fileconverter_onedrive'));
         }
         // Cleanup.
         $deleteparams = [
@@ -183,7 +187,8 @@ class converter implements \core_files\converter_interface {
         $this->start_document_conversion($conversion);
 
         if ($conversion->get('status') === conversion::STATUS_FAILED) {
-            print_error('conversionfailed', 'fileconverter_onedrive', '', $conversion->get_errors());
+            $errors = array_merge($conversion->get_errors(), ['statusmessage' => $conversion->get('statusmessage')]);
+            print_error('conversionfailed', 'fileconverter_onedrive', '', $errors);
         }
 
         $testfile = $conversion->get_destfile();
