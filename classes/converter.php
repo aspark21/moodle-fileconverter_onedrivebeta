@@ -92,13 +92,20 @@ class converter implements \core_files\converter_interface {
         // We use a path that should be unique to the Moodle site, and not clash with the onedrive repository plugin.
         $path = '_fileconverter_onedrive_' . $SITE->shortname;
         $params = [
-            'filename' => "$path/$contenthash.$importextension",
+            'filename' => urlencode("$path/$contenthash.$importextension"),
         ];
 
         $client->setHeader('X-Upload-Content-Type: ' . $filemimetype);
         $client->setHeader('X-Upload-Content-Length: ' . $filesize);
 
         $response = $service->call('upload', $params, $filecontent, $filemimetype);
+
+        if (empty($response->id)) {
+            $conversion->set('status', conversion::STATUS_FAILED);
+            $conversion->set('statusmessage', get_string('uploadfailed', 'fileconverter_onedrive'));
+            return $this;
+        }
+
         $fileid = $response->id;
 
         // Convert the file.
