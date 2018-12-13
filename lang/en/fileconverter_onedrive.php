@@ -42,3 +42,4 @@ $string['test_issuerinvalid'] = 'The OAuth service in the document converter set
 $string['test_issuernotenabled'] = 'The OAuth service set in the document converter settings is not enabled.';
 $string['test_issuernotconnected'] = 'The OAuth service set in the document converter settings does not have a system account connected.';
 $string['test_issuernotset'] = 'The OAuth service needs to be set in the document converter settings.';
+$string['uploadfailed'] = 'The file was not uploaded to  Microsoft OneDrive.';
