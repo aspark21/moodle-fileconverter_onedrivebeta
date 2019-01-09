@@ -48,7 +48,7 @@ class rest extends \core\oauth2\rest {
      */
     public function get_api_functions() {
         return [
-            // See https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/driveitem_get_content_format for API doc.
+            // See https://docs.microsoft.com/en-gb/graph/api/driveitem-get-content-format?view=graph-rest-1.0 for API doc.
             'convert' => [
                 'endpoint' => self::API . '/me/drive/items/{itemid}/content',
                 'method' => 'get',
@@ -58,7 +58,7 @@ class rest extends \core\oauth2\rest {
                 ],
                 'response' => 'headers'
             ],
-            // See: https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/driveitem_delete for API doc.
+            // See: https://docs.microsoft.com/en-gb/graph/api/driveitem-delete?view=graph-rest-1.0 for API doc.
             'delete' => [
                 'endpoint' => self::API . '/me/drive/items/{itemid}',
                 'method' => 'delete',
@@ -67,7 +67,7 @@ class rest extends \core\oauth2\rest {
                 ],
                 'response' => 'headers'
             ],
-            // See: https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/driveitem_put_content for API doc.
+            // See: https://docs.microsoft.com/en-gb/graph/api/driveitem-put-content?view=graph-rest-1.0 for API doc.
             'upload' => [
                 'endpoint' => self::API . '/me/drive/items/root:/{filename}:/content',
                 'method' => 'put',
