@@ -35,7 +35,7 @@ defined('MOODLE_INTERNAL') || die();
  */
 class rest extends \core\oauth2\rest {
     /** The API root for REST calls. */
-    const API = 'https://graph.microsoft.com/v1.0';
+    const API = 'https://graph.microsoft.com/beta';
 
     /** List of permissions needed by the user to access the web services. */
     const SCOPES = 'Files.ReadWrite.All';
@@ -48,7 +48,7 @@ class rest extends \core\oauth2\rest {
      */
     public function get_api_functions() {
         return [
-            // See https://docs.microsoft.com/en-gb/graph/api/driveitem-get-content-format?view=graph-rest-1.0 for API doc.
+            // See https://docs.microsoft.com/en-gb/graph/api/driveitem-get-content-format?view=graph-rest-beta for API doc.
             'convert' => [
                 'endpoint' => self::API . '/me/drive/items/{itemid}/content',
                 'method' => 'get',
@@ -58,7 +58,7 @@ class rest extends \core\oauth2\rest {
                 ],
                 'response' => 'headers'
             ],
-            // See: https://docs.microsoft.com/en-gb/graph/api/driveitem-delete?view=graph-rest-1.0 for API doc.
+            // See: https://docs.microsoft.com/en-gb/graph/api/driveitem-delete?view=graph-rest-beta for API doc.
             'delete' => [
                 'endpoint' => self::API . '/me/drive/items/{itemid}',
                 'method' => 'delete',
@@ -67,7 +67,7 @@ class rest extends \core\oauth2\rest {
                 ],
                 'response' => 'headers'
             ],
-            // See: https://docs.microsoft.com/en-gb/graph/api/driveitem-put-content?view=graph-rest-1.0 for API doc.
+            // See: https://docs.microsoft.com/en-gb/graph/api/driveitem-put-content?view=graph-rest-beta for API doc.
             'upload' => [
                 'endpoint' => self::API . '/me/drive/items/root:/{filename}:/content',
                 'method' => 'put',
