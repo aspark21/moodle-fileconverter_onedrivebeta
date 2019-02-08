@@ -41,9 +41,9 @@ use \core_files\conversion;
  */
 class converter implements \core_files\converter_interface {
     /** @var array $supported Map of output formats to input formats. */
+    /** Defining the list of supported files as the ones the stable 1.0 API doesn't support. TO DO - provide a plugin setting to use all beta API file formats or just the ones not supported by 1.0 **/
     private static $supported = array(
-        'pdf' => ['csv', 'doc', 'docx', 'odp', 'ods', 'odt', 'pot', 'potm', 'potx', 'pps', 'ppsx', 'ppsxm', 'ppt', 'pptm', 'pptx',
-            'rtf', 'xls', 'xlsx'],
+        'pdf' => ['epub', 'eml', 'htm', 'html', 'md', 'msg', 'ppsxm', 'tif', 'tiff'],
     );
 
     /**
