@@ -10,6 +10,9 @@ This module may be distributed under the terms of the General Public License
 
 PURPOSE
 ==========
+The Onedrive BETA API supports some file types which the 1.0 stable API doesn't, this plugin uses the beta API just for those file types which the stable API doesn't currently support.
+It should be used in conjunction with the stable onedrive converter plugin https://moodle.org/plugins/fileconverter_onedrive for files which the stable API supports.
+Can be helpful if you want to reduce further the reliance on unoconv.
 An alternative document conversion plugin that makes use of Microsoft OneDrive.
 
 INSTALLATION
