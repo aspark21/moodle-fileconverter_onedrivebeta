@@ -1,7 +1,7 @@
 ABOUT
 ==========
-The 'Microsoft OneDrive' document converter was developed by
-    Neill Magill
+The 'Microsoft OneDrive BETA' document converter was developed by
+    Neill Magill and modified to use the beta API by Alistair Spark
 
 It is based on the Google Drive document converter plugin.
 
@@ -16,7 +16,7 @@ INSTALLATION
 ==========
 The Microsoft OneDrive document converter follows the standard installation procedure.
 
-1. Create folder <path to your moodle dir>/files/converter/onedrive.
+1. Create folder <path to your moodle dir>/files/converter/onedrivebeta.
 2. Extract files from folder inside archive to created folder.
 3. Visit page Site administration ► Notifications to complete installation.
 

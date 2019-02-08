@@ -17,7 +17,7 @@
 /**
  * Strings for plugin 'fileconverter_onedrive'
  *
- * @package   fileconverter_onedrive
+ * @package   fileconverter_onedrivebeta
  * @copyright 2018 University of Nottingham
  * @author    Neill Magill <neill.magill@nottingham.ac.uk>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,15 +25,15 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Microsoft OneDrive';
+$string['pluginname'] = 'Microsoft OneDrive BETA';
 $string['disabled'] = 'Disabled';
 $string['downloadfailed'] = 'Moodle could not download the converted file from Microsoft.';
 $string['issuer'] = 'OAuth 2 service';
-$string['issuer_help'] = 'The OAuth 2 service used to access Microsoft OneDrive.';
+$string['issuer_help'] = 'The OAuth 2 service used to access Microsoft OneDrive BETA.';
 $string['nodownloadurl'] = 'The Microsoft Graph conversion API did not send a URL to the converted document';
 $string['privacy:metadata:fileconverter_onedrive:externalpurpose'] = 'This information is sent to Microsoft OneDrive API in order the file to be converted to an alternative format. The file is temporarily kept on Microsoft OneDrive Drive and gets deleted after the conversion is done.';
 $string['privacy:metadata:fileconverter_onedrive:filecontent'] = 'The content of the file.';
-$string['privacy:metadata:fileconverter_onedrive:params'] = 'The query parameters passed to Microsoft OneDrive API.';
+$string['privacy:metadata:fileconverter_onedrive:params'] = 'The query parameters passed to Microsoft OneDrive API BETA.';
 $string['test_converter'] = 'Test this converter is working properly.';
 $string['test_conversion'] = 'Test document conversion';
 $string['test_conversionready'] = 'This document converter is configured properly.';
@@ -42,4 +42,4 @@ $string['test_issuerinvalid'] = 'The OAuth service in the document converter set
 $string['test_issuernotenabled'] = 'The OAuth service set in the document converter settings is not enabled.';
 $string['test_issuernotconnected'] = 'The OAuth service set in the document converter settings does not have a system account connected.';
 $string['test_issuernotset'] = 'The OAuth service needs to be set in the document converter settings.';
-$string['uploadfailed'] = 'The file was not uploaded to  Microsoft OneDrive.';
+$string['uploadfailed'] = 'The file was not uploaded to  Microsoft OneDrive BETA.';

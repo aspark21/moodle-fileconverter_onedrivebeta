@@ -17,12 +17,12 @@
 /**
  * Microsoft OneDrive Rest API.
  *
- * @package    fileconverter_onedrive
+ * @package    fileconverter_onedrivebeta
  * @copyright  2018 University of Nottingham
  * @author     Neill Magill <neill.magill@nottingham.ac.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace fileconverter_onedrive;
+namespace fileconverter_onedrivebeta;
 
 defined('MOODLE_INTERNAL') || die();
 

@@ -17,7 +17,7 @@
 /**
  * Link to the OAuth 2 service we will use.
  *
- * @package   fileconverter_onedrive
+ * @package   fileconverter_onedrivebeta
  * @copyright 2018 University of Nottingham
  * @author    Neill Magill <neill.magill@nottingham.ac.uk>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,18 +29,18 @@ if ($hassiteconfig) {
     $options = [];
     $issuers = \core\oauth2\api::get_all_issuers();
 
-    $options[''] = get_string('disabled', 'fileconverter_onedrive');
+    $options[''] = get_string('disabled', 'fileconverter_onedrivebeta');
     foreach ($issuers as $issuer) {
         $options[$issuer->get('id')] = s($issuer->get('name'));
     }
 
-    $settings->add(new admin_setting_configselect('fileconverter_onedrive/issuerid',
-                                                  get_string('issuer', 'fileconverter_onedrive'),
-                                                  get_string('issuer_help', 'fileconverter_onedrive'),
+    $settings->add(new admin_setting_configselect('fileconverter_onedrivebeta/issuerid',
+                                                  get_string('issuer', 'fileconverter_onedrivebeta'),
+                                                  get_string('issuer_help', 'fileconverter_onedrivebeta'),
                                                   '',
                                                   $options));
 
-    $url = new moodle_url('/files/converter/onedrive/test.php');
-    $link = html_writer::link($url, get_string('test_converter', 'fileconverter_onedrive'));
+    $url = new moodle_url('/files/converter/onedrivebeta/test.php');
+    $link = html_writer::link($url, get_string('test_converter', 'fileconverter_onedrivebeta'));
     $settings->add(new admin_setting_heading('test_converter', '', $link));
 }

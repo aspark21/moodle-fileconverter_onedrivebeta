@@ -17,12 +17,12 @@
 /**
  * Class for converting files between different file formats using Microsoft OneDrive drive.
  *
- * @package    fileconverter_onedrive
+ * @package    fileconverter_onedrivebeta
  * @copyright  2018 University of Nottingham
  * @author     Neill Magill <neill.magill@nottingham.ac.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace fileconverter_onedrive;
+namespace fileconverter_onedrivebeta;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -34,7 +34,7 @@ use \core_files\conversion;
 /**
  * Class for converting files between different formats using unoconv.
  *
- * @package    fileconverter_onedrive
+ * @package    fileconverter_onedrivebeta
  * @copyright  2018 University of Nottingham
  * @author     Neill Magill <neill.magill@nottingham.ac.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -58,22 +58,22 @@ class converter implements \core_files\converter_interface {
         $file = $conversion->get_sourcefile();
         $format = $conversion->get('targetformat');
 
-        $issuerid = get_config('fileconverter_onedrive', 'issuerid');
+        $issuerid = get_config('fileconverter_onedrivebeta', 'issuerid');
         if (empty($issuerid)) {
             $conversion->set('status', conversion::STATUS_FAILED);
-            $conversion->set('statusmessage', get_string('test_issuernotset', 'fileconverter_onedrive'));
+            $conversion->set('statusmessage', get_string('test_issuernotset', 'fileconverter_onedrivebeta'));
             return $this;
         }
 
         $issuer = \core\oauth2\api::get_issuer($issuerid);
         if (empty($issuer)) {
             $conversion->set('status', conversion::STATUS_FAILED);
-            $conversion->set('statusmessage', get_string('test_issuerinvalid', 'fileconverter_onedrive'));
+            $conversion->set('statusmessage', get_string('test_issuerinvalid', 'fileconverter_onedrivebeta'));
             return $this;
         }
         $client = \core\oauth2\api::get_system_oauth_client($issuer);
 
-        $service = new \fileconverter_onedrive\rest($client);
+        $service = new \fileconverter_onedrivebeta\rest($client);
 
         $contenthash = $file->get_contenthash();
 
@@ -90,7 +90,7 @@ class converter implements \core_files\converter_interface {
 
         // First upload the file.
         // We use a path that should be unique to the Moodle site, and not clash with the onedrive repository plugin.
-        $path = '_fileconverter_onedrive_' . $SITE->shortname;
+        $path = '_fileconverter_onedrivebeta_' . $SITE->shortname;
         $params = [
             'filename' => urlencode("$path/$contenthash.$importextension"),
         ];
@@ -102,7 +102,7 @@ class converter implements \core_files\converter_interface {
 
         if (empty($response->id)) {
             $conversion->set('status', conversion::STATUS_FAILED);
-            $conversion->set('statusmessage', get_string('uploadfailed', 'fileconverter_onedrive'));
+            $conversion->set('statusmessage', get_string('uploadfailed', 'fileconverter_onedrivebeta'));
             return $this;
         }
 
@@ -125,7 +125,7 @@ class converter implements \core_files\converter_interface {
 
         if (empty($downloadurl)) {
             $conversion->set('status', conversion::STATUS_FAILED);
-            $conversion->set('statusmessage', get_string('nodownloadurl', 'fileconverter_onedrive'));
+            $conversion->set('statusmessage', get_string('nodownloadurl', 'fileconverter_onedrivebeta'));
             return $this;
         }
 
@@ -144,7 +144,7 @@ class converter implements \core_files\converter_interface {
             $conversion->update();
         } else {
             $conversion->set('status', conversion::STATUS_FAILED);
-            $conversion->set('statusmessage', get_string('downloadfailed', 'fileconverter_onedrive'));
+            $conversion->set('statusmessage', get_string('downloadfailed', 'fileconverter_onedrivebeta'));
         }
         // Cleanup.
         $deleteparams = [
@@ -167,7 +167,7 @@ class converter implements \core_files\converter_interface {
         $filerecord = [
             'contextid' => \context_system::instance()->id,
             'component' => 'test',
-            'filearea' => 'fileconverter_onedrive',
+            'filearea' => 'fileconverter_onedrivebeta',
             'itemid' => 0,
             'filepath' => '/',
             'filename' => 'conversion_test.docx'
@@ -195,7 +195,7 @@ class converter implements \core_files\converter_interface {
 
         if ($conversion->get('status') === conversion::STATUS_FAILED) {
             $errors = array_merge($conversion->get_errors(), ['statusmessage' => $conversion->get('statusmessage')]);
-            print_error('conversionfailed', 'fileconverter_onedrive', '', $errors);
+            print_error('conversionfailed', 'fileconverter_onedrivebeta', '', $errors);
         }
 
         $testfile = $conversion->get_destfile();
@@ -218,7 +218,7 @@ class converter implements \core_files\converter_interface {
      * @return bool
      */
     public static function are_requirements_met() {
-        $issuerid = get_config('fileconverter_onedrive', 'issuerid');
+        $issuerid = get_config('fileconverter_onedrivebeta', 'issuerid');
         if (empty($issuerid)) {
             return false;
         }

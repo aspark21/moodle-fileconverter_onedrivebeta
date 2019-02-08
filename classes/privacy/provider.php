@@ -17,13 +17,13 @@
 /**
  * Privacy class for requesting user data.
  *
- * @package    fileconverter_onedrive
+ * @package    fileconverter_onedrivebeta
  * @copyright  2018 University of Nottingham
  * @author     Neill Magill <neill.magill@nottingham.ac.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace fileconverter_onedrive\privacy;
+namespace fileconverter_onedrivebeta\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -34,7 +34,7 @@ use \core_privacy\local\request\approved_contextlist;
 /**
  * Privacy class for requesting user data.
  *
- * @package    fileconverter_onedrive
+ * @package    fileconverter_onedrivebeta
  * @copyright  2018 University of Nottingham
  * @author     Neill Magill <neill.magill@nottingham.ac.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -47,10 +47,10 @@ class provider implements \core_privacy\local\metadata\provider, \core_privacy\l
      * @return  collection A listing of user data stored through this system.
      */
     public static function get_metadata(collection $collection) : collection {
-        $collection->add_external_location_link('onedrive', [
-            'params' => 'privacy:metadata:fileconverter_onedrive:params',
-            'filecontent' => 'privacy:metadata:fileconverter_onedrive:filecontent',
-        ], 'privacy:metadata:fileconverter_onedrive:externalpurpose');
+        $collection->add_external_location_link('onedrivebeta', [
+            'params' => 'privacy:metadata:fileconverter_onedrivebeta:params',
+            'filecontent' => 'privacy:metadata:fileconverter_onedrivebeta:filecontent',
+        ], 'privacy:metadata:fileconverter_onedrivebeta:externalpurpose');
         return $collection;
     }
 

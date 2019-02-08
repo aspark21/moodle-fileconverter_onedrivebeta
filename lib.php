@@ -31,9 +31,9 @@ defined('MOODLE_INTERNAL') || die();
  * @param \core\oauth2\issuer $issuer
  * @return string
  */
-function fileconverter_onedrive_oauth2_system_scopes(\core\oauth2\issuer $issuer) {
-    if ($issuer->get('id') == get_config('fileconverter_onedrive', 'issuerid')) {
-        return \fileconverter_onedrive\rest::SCOPES;
+function fileconverter_onedrivebeta_oauth2_system_scopes(\core\oauth2\issuer $issuer) {
+    if ($issuer->get('id') == get_config('fileconverter_onedrivebeta', 'issuerid')) {
+        return \fileconverter_onedrivebeta\rest::SCOPES;
     }
     return '';
 }

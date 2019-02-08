@@ -17,7 +17,7 @@
 /**
  * Test that Microsoft OneDrive is configured correctly
  *
- * @package   fileconverter_onedrive
+ * @package   fileconverter_onedrivebeta
  * @copyright 2018 University of Nottingham
  * @author    Neill Magill <neill.magill@nottingham.ac.uk>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,22 +29,22 @@ use core\notification;
 
 $sendpdf = optional_param('sendpdf', 0, PARAM_BOOL);
 
-$PAGE->set_url(new moodle_url('/files/converter/onedrive/test.php'));
+$PAGE->set_url(new moodle_url('/files/converter/onedrivebeta/test.php'));
 $PAGE->set_context(context_system::instance());
 
 require_login();
 require_capability('moodle/site:config', context_system::instance());
 
-$strheading = get_string('test_conversion', 'fileconverter_onedrive');
+$strheading = get_string('test_conversion', 'fileconverter_onedrivebeta');
 $PAGE->navbar->add(get_string('administrationsite'));
 $PAGE->navbar->add(get_string('plugins', 'admin'));
-$PAGE->navbar->add(get_string('pluginname', 'fileconverter_onedrive'),
-        new moodle_url('/admin/settings.php', array('section' => 'fileconverteronedrive')));
+$PAGE->navbar->add(get_string('pluginname', 'fileconverter_onedrivebeta'),
+        new moodle_url('/admin/settings.php', array('section' => 'fileconverteronedrivebeta')));
 $PAGE->navbar->add($strheading);
 $PAGE->set_heading($strheading);
 $PAGE->set_title($strheading);
 
-$converter = new \fileconverter_onedrive\converter();
+$converter = new \fileconverter_onedrivebeta\converter();
 
 if ($sendpdf) {
     require_sesskey();
@@ -55,30 +55,30 @@ if ($sendpdf) {
 
 $result = $converter->are_requirements_met();
 if ($result) {
-    $msg = $OUTPUT->notification(get_string('test_conversionready', 'fileconverter_onedrive'), notification::SUCCESS);
+    $msg = $OUTPUT->notification(get_string('test_conversionready', 'fileconverter_onedrivebeta'), notification::SUCCESS);
     $pdflink = new moodle_url($PAGE->url, array('sendpdf' => 1, 'sesskey' => sesskey()));
-    $msg .= html_writer::link($pdflink, get_string('test_conversion', 'fileconverter_onedrive'));
+    $msg .= html_writer::link($pdflink, get_string('test_conversion', 'fileconverter_onedrivebeta'));
     $msg .= html_writer::empty_tag('br');
 } else {
     // Diagnostics time.
-    $issuerid = get_config('fileconverter_onedrive', 'issuerid');
+    $issuerid = get_config('fileconverter_onedrivebeta', 'issuerid');
     if (empty($issuerid)) {
-        $problem = get_string('test_issuernotset', 'fileconverter_onedrive');
+        $problem = get_string('test_issuernotset', 'fileconverter_onedrivebeta');
     } else {
         $issuer = \core\oauth2\api::get_issuer($issuerid);
         if (empty($issuer)) {
-            $problem = get_string('test_issuerinvalid', 'fileconverter_onedrive');
+            $problem = get_string('test_issuerinvalid', 'fileconverter_onedrivebeta');
         } else if (!$issuer->get('enabled')) {
-            $problem = get_string('test_issuernotenabled', 'fileconverter_onedrive');
+            $problem = get_string('test_issuernotenabled', 'fileconverter_onedrivebeta');
         } else if (!$issuer->is_system_account_connected()) {
-            $problem = get_string('test_issuernotconnected', 'fileconverter_onedrive');
+            $problem = get_string('test_issuernotconnected', 'fileconverter_onedrivebeta');
         } else {
-            $problem = get_string('test_conversionnotready', 'fileconverter_onedrive');
+            $problem = get_string('test_conversionnotready', 'fileconverter_onedrivebeta');
         }
     }
     $msg = $OUTPUT->notification($problem, notification::WARNING);
 }
-$returl = new moodle_url('/admin/settings.php', array('section' => 'fileconverteronedrive'));
+$returl = new moodle_url('/admin/settings.php', array('section' => 'fileconverteronedrivebeta'));
 $msg .= $OUTPUT->continue_button($returl);
 
 echo $OUTPUT->header();

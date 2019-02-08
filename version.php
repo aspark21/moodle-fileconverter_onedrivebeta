@@ -17,7 +17,7 @@
 /**
  * Version details
  *
- * @package   fileconverter_onedrive
+ * @package   fileconverter_onedrivebeta
  * @author    Neill Magill <neill.magill@nottingham.ac.uk>
  * @copyright 2018 University of Nottingham
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'fileconverter_onedrive';
+$plugin->component = 'fileconverter_onedrivebeta';
 $plugin->version = 2018121300;
 $plugin->requires = 2017110800;
 $plugin->release = '1.0.2 (2018-12-13)';
